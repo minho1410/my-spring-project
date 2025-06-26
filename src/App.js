@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div>
-        <h1>SPC 관리 시스템</h1>
+        <h1>SPC 관리 시스템 테스트</h1>
         <nav>
           <Link to="/">🏠 메인</Link> |{" "}
           <Link to="/monitoring">📊 계측기 SPC 모니터링</Link>

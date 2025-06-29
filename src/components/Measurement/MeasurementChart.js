@@ -26,4 +26,4 @@ function MeasurementChart({ data }) {
   );
 }
 
-export default MeasurementChart; // ✅ 이 줄이 꼭 있어야 함
+export default MeasurementChart;

@@ -1,0 +1,21 @@
+/* RegisterPage.css */
+.register-form-page {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px 160px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-form input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+}
+
+.register-form button {
+  margin-right: 10px;
+}

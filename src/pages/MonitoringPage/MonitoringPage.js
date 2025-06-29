@@ -18,6 +18,13 @@ function MonitoringPage() {
       .catch((err) => console.error("데이터 로딩 실패:", err));
   };
 
+  const handleSearch = (searchParams) => {
+    console.log("검색 조건:", searchParams);
+    axios.get("/api/measurements/search", { params: searchParams })
+      .then((res) => setData(res.data))
+      .catch((err) => console.error("검색 실패:", err));
+  };
+
   useEffect(() => {
     fetchData();
   }, [reload]);
@@ -25,7 +32,7 @@ function MonitoringPage() {
   return (
     <div>
       <h2>📈 계측기 SPC 모니터링 화면</h2>
-      <MeasurementForm onSaved={handleSaved} />
+      <MeasurementForm onSaved={handleSaved} onSearch={handleSearch} />
       <MeasurementList data={data} reloadTrigger={reload} /> {/* ✅ 목록에도 전달 */}
       <MeasurementChart data={data} />
     </div>

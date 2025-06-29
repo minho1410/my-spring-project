@@ -1,51 +1,44 @@
 // src/components/MeasurementForm.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './MeasurementForm.css';  // CSS 파일 임포트
 
-function MeasurementForm({ onSaved }) {
-  const [deviceId, setDeviceId] = useState('');
-  const [value, setValue] = useState('');
+function MeasurementForm({ onSaved, onSearch }) {
+  const [searchDeviceId, setSearchDeviceId] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
+    onSearch({ deviceId: searchDeviceId, startDate, endDate });
+  };
 
-    if (!deviceId || !value) {
-      alert("값을 입력하세요.");
-      return;
-    }
-
-    const newMeasurement = {
-      deviceId,
-      value: parseFloat(value),
-      // measureTime은 서버에서 생성하도록 생략해도 됨
-    };
-
-    try {
-      await axios.post("/api/measurements", newMeasurement);
-      onSaved(); // 등록 성공 시 리스트 새로고침 요청
-      setDeviceId('');
-      setValue('');
-    } catch (error) {
-      console.error("등록 실패:", error);
-      alert("등록 실패");
-    }
+  const goToRegister = () => {
+    navigate('/monitoring/register'); // 등록 전용 화면으로 이동
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form onSubmit={handleSearch} className="measurement-form">
+      <h3>🔍 측정값 검색</h3>
       <input
         type="text"
-        placeholder="계측기 ID"
-        value={deviceId}
-        onChange={(e) => setDeviceId(e.target.value)}
+        placeholder="계측기 ID 검색"
+        value={searchDeviceId}
+        onChange={(e) => setSearchDeviceId(e.target.value)}
       />
       <input
-        type="number"
-        placeholder="측정값"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        type="date"
+        value={startDate}
+        onChange={(e) => setStartDate(e.target.value)}
       />
-      <button type="submit">등록</button>
+      <input
+        type="date"
+        value={endDate}
+        onChange={(e) => setEndDate(e.target.value)}
+      />
+      <button type="submit">검색</button>
+      <button type="button" onClick={goToRegister}>+ 등록</button>
     </form>
   );
 }

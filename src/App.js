@@ -1,9 +1,11 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import MonitoringPage from "./pages/MonitoringPage";
-import MainPage from "./pages/MainPage"; // 홈 페이지 추가
-import EditPage from "./pages/MonitoringPage/EditPage";
+
+import MainPage from "./pages/MainPage/MainPage";
+import MonitoringPage from "./pages/MonitoringPage/MonitoringPage";
+import EditPage from "./pages/MonitoringPage/EditPage/EditPage";
+import RegisterPage from "./pages/MonitoringPage/RegisterPage/RegisterPage";
 
 function App() {
   return (
@@ -16,9 +18,10 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<MainPage  />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/monitoring" element={<MonitoringPage />} />
           <Route path="/monitoring/edit/:id" element={<EditPage />} />
+          <Route path="/monitoring/register" element={<RegisterPage />} />
         </Routes>
       </div>
     </Router>

@@ -1,6 +1,7 @@
 // src/components/MeasurementList.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./MeasurementList.css";
 
 /**
  * 계측기 측정 데이터 리스트를 보여주는 컴포넌트

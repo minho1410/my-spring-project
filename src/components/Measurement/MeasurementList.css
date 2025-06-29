@@ -1,0 +1,57 @@
+.list {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.list table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 15px;
+}
+
+.list th, .list td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.list th {
+  background-color: #eaeaea;
+  color: #333;
+}
+
+.list tr:hover {
+  background-color: #f1f1f1;
+}
+
+.list button {
+  margin: 0 4px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.list button:hover {
+  opacity: 0.9;
+}
+
+.list button:nth-child(1) {
+  background-color: #4caf50; /* 저장: 초록 */
+  color: white;
+}
+
+.list button:nth-child(2) {
+  background-color: #f44336; /* 취소/삭제: 빨강 */
+  color: white;
+}
+
+.list button:nth-child(3) {
+  background-color: #2196f3; /* 수정: 파랑 */
+  color: white;
+}

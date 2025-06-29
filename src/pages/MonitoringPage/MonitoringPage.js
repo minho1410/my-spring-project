@@ -18,6 +18,11 @@ function MonitoringPage() {
       .catch((err) => console.error("데이터 로딩 실패:", err));
   };
 
+   // 저장, 삭제 후 호출할 함수 (reload 상태 토글)
+  const handleReload = () => {
+    setReload(prev => !prev);
+  };
+
   const handleSearch = (searchParams) => {
     console.log("검색 조건:", searchParams);
     axios.get("/api/measurements/search", { params: searchParams })
@@ -33,7 +38,7 @@ function MonitoringPage() {
     <div>
       <h2>📈 계측기 SPC 모니터링 화면</h2>
       <MeasurementForm onSaved={handleSaved} onSearch={handleSearch} />
-      <MeasurementList data={data} reloadTrigger={reload} /> {/* ✅ 목록에도 전달 */}
+      <MeasurementList data={data} onReload={handleReload} /> {/* ✅ 목록에도 전달 */}
       <MeasurementChart data={data} />
     </div>
   );

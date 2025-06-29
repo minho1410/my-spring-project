@@ -4,18 +4,28 @@ import { useNavigate } from 'react-router-dom';
 import './MeasurementForm.css';  // CSS 파일 임포트
 
 function MeasurementForm({ onSaved, onSearch }) {
-  const [searchDeviceId, setSearchDeviceId] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const navigate = useNavigate();
 
+  // 전체 검색
   const handleSearch = (e) => {
     e.preventDefault();
-    onSearch({ deviceId: searchDeviceId, startDate, endDate });
+    onSearch({ value: searchValue, startDate, endDate });
   };
 
+  // 전체 검색 초기화
+  const handleReset = () => {
+    setSearchValue('');
+    setStartDate('');
+    setEndDate('');
+    onSearch({ value: '', startDate: '', endDate: '' }); // 전체 검색
+  };
+
+  // 등록 전용 화면으로 이동
   const goToRegister = () => {
-    navigate('/monitoring/register'); // 등록 전용 화면으로 이동
+    navigate('/monitoring/register'); 
   };
 
   return (
@@ -23,9 +33,9 @@ function MeasurementForm({ onSaved, onSearch }) {
       <h3>🔍 측정값 검색</h3>
       <input
         type="text"
-        placeholder="계측기 ID 검색"
-        value={searchDeviceId}
-        onChange={(e) => setSearchDeviceId(e.target.value)}
+        placeholder="측정값 검색"
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
       />
       <input
         type="date"
@@ -38,6 +48,7 @@ function MeasurementForm({ onSaved, onSearch }) {
         onChange={(e) => setEndDate(e.target.value)}
       />
       <button type="submit">검색</button>
+      <button type="button" onClick={handleReset}>초기화</button>
       <button type="button" onClick={goToRegister}>+ 등록</button>
     </form>
   );

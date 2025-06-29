@@ -1,38 +1,88 @@
-.App {
+/* App.css */
+
+/* 전체 앱 기본 스타일 */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+h1 {
+  background-color: #1976d2;
+  color: white;
+  padding: 20px 0;
+  margin: 0;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* 네비게이션 바 */
+nav {
+  background-color: #e3f2fd;
+  padding: 12px 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav a {
+  color: #1976d2;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav a:hover {
+  color: #0d47a1;
+  text-decoration: underline;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* 메인 콘텐츠 레이아웃 */
+div {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+/* 테이블 기본 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f1f1f1;
+}
+
+/* 버튼 스타일 */
+button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #1976d2;
   color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #1565c0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* input 필드 */
+input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
